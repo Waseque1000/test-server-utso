@@ -3,28 +3,16 @@
 const express = require("express");
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const cors = require("cors");
-require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// CORS Configuration - Allow your Netlify domain
-const corsOptions = {
-  origin: [
-    "http://localhost:3000",
-    "http://localhost:5173",
-    "https://roaring-naiad-cda4d8.netlify.app",
-    process.env.CLIENT_URL
-  ],
-  credentials: true,
-  optionsSuccessStatus: 200,
-};
-
 // Middleware
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
-const uri = process.env.MONGODB_URI || "mongodb+srv://shahriar5703_db_user:iJ9T2PpmSdZjOMpW@cluster0.1ikjvvw.mongodb.net/?appName=Cluster0";
+const uri =
+  "mongodb+srv://shahriar5703_db_user:iJ9T2PpmSdZjOMpW@cluster0.1ikjvvw.mongodb.net/?appName=Cluster0";
 
 
 const client = new MongoClient(uri, {
